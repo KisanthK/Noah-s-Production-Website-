@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Sunset Productions</title>
+<link rel="icon" type="image/png" href="sunset.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Franklin:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<div class="page-transition" id="pageTrans"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-brand" onclick="goTo('home')">
+    <img class="nav-brand-icon" src="sunset.jpg" alt="Neon Sunset Productions emblem">
+    <span class="nav-brand-name">Neon Sunset Productions</span>
+  </a>
+  <div class="nav-menu" id="navMenu">
+    <a class="nav-link active" data-page="home" onclick="goTo('home')">Home</a>
+    <a class="nav-link" data-page="about" onclick="goTo('about')">About</a>
+    <a class="nav-link" data-page="portfolio" onclick="goTo('portfolio')">Portfolio</a>
+    <a class="nav-link" data-page="services" onclick="goTo('services')">Services</a>
+    <a class="nav-link" data-page="experience" onclick="goTo('experience')">Experience</a>
+    <a class="nav-link" data-page="blog" onclick="goTo('blog')">Blog</a>
+    <a class="nav-contact-btn" onclick="goTo('contact')">Contact</a>
+  </div>
+  <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a class="nav-link" onclick="goTo('home')">Home</a>
+  <a class="nav-link" onclick="goTo('about')">About</a>
+  <a class="nav-link" onclick="goTo('portfolio')">Portfolio</a>
+  <a class="nav-link" onclick="goTo('services')">Services</a>
+  <a class="nav-link" onclick="goTo('experience')">Experience</a>
+  <a class="nav-link" onclick="goTo('blog')">Blog</a>
+  <a class="nav-link" onclick="goTo('contact')">Contact</a>
+</div>
+
+<!-- ═══════════ HOME ═══════════ -->
+<div class="page active" id="page-home">
+  <section class="hero" style="background-image:linear-gradient(rgba(12,11,10,0.56), rgba(12,11,10,0.84)), url('sunset.jpg');">
+    <div class="hero-glow"></div>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-tag sr">Film · Television · Commercial</p>
+        <h1 class="hero-h1 sr sr-d1">Crafting stories that <em>move</em> audiences</h1>
+        <p class="hero-p sr sr-d2">Neon Sunset Productions is the production company of Noah Davidson. Coming from a rich background of Film studies at Brock University and Fanshawe College alongside more than 5 years of practical filmmaking, videography, photography and editing experience there is no challenge we cannot undertake.</p>
+        <div class="hero-btns sr sr-d3">
+          <a class="btn-sun" onclick="goTo('portfolio')">View Productions</a>
+          <a class="btn-ghost" onclick="goTo('about')">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-portrait-wrap sr sr-d2">
+        <div class="hero-portrait-container">
+          <img class="hero-portrait" src="noah.jpg" alt="Portrait of Noah Davidson in a blue suit">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- HOME: About preview -->
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <p class="sec-label sr">About the Studio</p>
+      <h2 class="sec-h2 sr sr-d1">Where business meets creative excellence</h2>
+      <p class="sec-p sr sr-d2" style="margin-bottom:36px">Growing up in the fast-paced international environment that is Hong Kong gave Noah an appreciation for the intersection of business and artistry. Whether it's a feature film, a short, a commercial spot, or a passion project — good business and good filmmaking go together.</p>
+      <a class="btn-ghost sr sr-d3" onclick="goTo('about')">Full Biography</a>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- HOME: Services preview -->
+  <section class="sec sec-night">
+    <div class="wrap">
+      <p class="sec-label sr">Capabilities</p>
+      <h2 class="sec-h2 sr sr-d1">Full-spectrum production</h2>
+      <div class="svc-grid" style="margin-top:48px">
+        <div class="svc-card sr"><div class="svc-num">01</div><h3 class="svc-title">Direction & Cinematography</h3><p class="svc-desc">From concept to final frame, overseeing the creative vision with hands-on direction and expert camera work.</p></div>
+        <div class="svc-card sr sr-d1"><div class="svc-num">02</div><h3 class="svc-title">Live Broadcast & Sports</h3><p class="svc-desc">Multi-camera setups for live television including university sports and commercial event coverage.</p></div>
+        <div class="svc-card sr sr-d2"><div class="svc-num">03</div><h3 class="svc-title">Post-Production & Editing</h3><p class="svc-desc">Video editing, graphics, colour grading, and sound design — polished, broadcast-ready results.</p></div>
+      </div>
+      <a class="btn-ghost sr" style="margin-top:48px" onclick="goTo('services')">All Services</a>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- HOME: Newsletter -->
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases, behind-the-scenes content, and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit" class="btn-sun">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<div class="page" id="page-about">
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <div class="about-split">
+        <div>
+          <p class="sec-label sr">Filmmaker Biography</p>
+          <h2 class="sec-h2 sr sr-d1">Noah Davidson</h2>
+          <p class="sr sr-d1" style="color:var(--text);font-weight:400;font-size:0.95rem;margin-bottom:4px">Founder & CEO — Neon Sunset Productions</p>
+          <div class="about-roles sr sr-d2">
+            <span class="role-pill">Producer</span>
+            <span class="role-pill">Director</span>
+            <span class="role-pill">Editor</span>
+            <span class="role-pill">Cinematographer</span>
+            <span class="role-pill">Marketing Director</span>
+          </div>
+          <p class="about-bio sr sr-d2">Growing up in the fast-paced international environment that is Hong Kong gave me an appreciation for the combination of business and pleasure.</p>
+          <p class="about-bio sr sr-d2">At Neon Sunset, my mission is to not only create excellent cinema, but to cultivate an environment where work doesn't impede on fun, and vice versa. Whether it be a feature film, a short, promotion or something just for fun — I believe that good business and good filmmaking go together like peanut butter and chocolate.</p>
+          <p class="about-note sr sr-d3">Member of Sigma Chi (ΣX) Fraternity</p>
+        </div>
+        <div class="sr sr-d2">
+          <div class="about-image-frame">
+            <img class="about-img" src="noah.jpg" alt="Noah Davidson portrait">
+            <div class="about-image-caption">Professional portrait of Noah Davidson, founder of Neon Sunset Productions.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-stats sr sr-d3">
+        <div class="about-stat"><div class="about-stat-num">5+</div><div class="about-stat-label">Years Experience</div></div>
+        <div class="about-stat"><div class="about-stat-num">2</div><div class="about-stat-label">Institutions — Brock & Fanshawe</div></div>
+        <div class="about-stat"><div class="about-stat-num">6+</div><div class="about-stat-label">Roles Mastered</div></div>
+        <div class="about-stat"><div class="about-stat-num">3</div><div class="about-stat-label">Countries Worked In</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume image -->
+  <section class="sec sec-night" style="text-align:center">
+    <div class="wrap">
+      <p class="sec-label sr" style="justify-content:center">Curriculum Vitae</p>
+      <h2 class="sec-h2 sr sr-d1" style="text-align:center">Résumé</h2>
+      <div class="resume-frame sr sr-d2" style="max-width:540px;margin:40px auto 0">
+        <img class="resume-image" src="resume.jpg" alt="Resume of Noah Davidson">
+      </div>
+    </div>
+  </section>
+
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn-sun">Subscribe</button></form>
+  </div>
+</div>
+
+<!-- ═══════════ PORTFOLIO ═══════════ -->
+<div class="page" id="page-portfolio">
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <p class="sec-label sr">Portfolio</p>
+      <h2 class="sec-h2 sr sr-d1">Selected productions</h2>
+      <p class="sec-p sr sr-d2">Welcome to the portfolio. Here you'll find a selection of work. Explore projects to learn more about what we do.</p>
+      
+      <div class="portfolio-grid portfolio-video-grid">
+  <article class="pf-card sr sr-d1">
+    <div class="pf-thumb pf-video-shell">
+      <video class="pf-video" controls preload="metadata" playsinline poster="issacs.png">
+        <source src="Last Shot v2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="pf-body">
+      <div class="pf-type">Promotional Short</div>
+      <h3 class="pf-title">'Last Shot' for BrockTV</h3>
+      <p class="pf-desc">A promotional short highlighting the final event night at Brock University's bar, Isaac's. Shot and edited by Noah Davidson.</p>
+      <p class="pf-date">April 2025</p>
+    </div>
+  </article>
+
+  <article class="pf-card sr sr-d2">
+    <div class="pf-thumb pf-video-shell">
+      <video class="pf-video" controls preload="metadata" playsinline poster="basketball.jpg">
+        <source src="Mens Basketball.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="pf-body">
+      <div class="pf-type">Promotional Short</div>
+      <h3 class="pf-title">Men's Basketball — Brock University</h3>
+      <p class="pf-desc">A promotional short highlighting Brock University's men's basketball team from the 2024–2025 season.</p>
+      <p class="pf-date">February 2025</p>
+    </div>
+  </article>
+
+  <article class="pf-card sr sr-d3">
+    <div class="pf-thumb pf-video-shell">
+      <video class="pf-video" controls preload="metadata" playsinline poster="sunset.jpg">
+        <source src="Film 2F98 The Jacuzzi Noah_Davidson.mov" type="video/quicktime">
+        <source src="Film 2F98 The Jacuzzi Noah_Davidson.mov">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="pf-body">
+      <div class="pf-type">Narrative Film</div>
+      <h3 class="pf-title">The Jacuzzi</h3>
+      <p class="pf-desc">A narrative film project showcasing Noah Davidson's production and visual storytelling work.</p>
+      <p class="pf-date">Featured project</p>
+    </div>
+  </article>
+</div>
+</section>
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn-sun">Subscribe</button></form>
+  </div>
+</div>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<div class="page" id="page-services">
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <p class="sec-label sr">What We Do</p>
+      <h2 class="sec-h2 sr sr-d1">Full-spectrum production capabilities</h2>
+      <div class="svc-grid">
+        <div class="svc-card sr"><div class="svc-num">01</div><h3 class="svc-title">Direction & Cinematography</h3><p class="svc-desc">From concept to final frame, overseeing the creative vision with hands-on direction and expert camera work for narrative and commercial projects.</p></div>
+        <div class="svc-card sr sr-d1"><div class="svc-num">02</div><h3 class="svc-title">Live Broadcast & Sports</h3><p class="svc-desc">Managing multi-camera setups for live television broadcasts including university sports, commercial programming, and live event coverage.</p></div>
+        <div class="svc-card sr sr-d2"><div class="svc-num">03</div><h3 class="svc-title">Post-Production & Editing</h3><p class="svc-desc">Extensive video editing, graphics, colour grading, and sound design. Bringing raw footage to life with polished, broadcast-ready results.</p></div>
+        <div class="svc-card sr sr-d3"><div class="svc-num">04</div><h3 class="svc-title">Production Management</h3><p class="svc-desc">Coordinating talent, crew, equipment, and logistics. Ensuring every production runs on time and on budget with professional oversight.</p></div>
+        <div class="svc-card sr"><div class="svc-num">05</div><h3 class="svc-title">Sound & Audio Engineering</h3><p class="svc-desc">Operation of professional recording equipment including shotgun and clip microphones, with full audio post-production and mixing capabilities.</p></div>
+        <div class="svc-card sr sr-d1"><div class="svc-num">06</div><h3 class="svc-title">Equipment & Technical</h3><p class="svc-desc">Broadcast-quality camera operation, equipment maintenance and repair, lighting design, and full technical support for productions of any scale.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn-sun">Subscribe</button></form>
+  </div>
+</div>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<div class="page" id="page-experience">
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <p class="sec-label sr">Curriculum Vitae</p>
+      <h2 class="sec-h2 sr sr-d1">Professional experience</h2>
+      <div class="exp-timeline">
+        <div class="exp-item"><div class="exp-date">2024 – Present</div><div class="exp-role">Media Director</div><div class="exp-org">Brock TV, St. Catharines</div><div class="exp-desc">Manage, set up, and operate live TV broadcasts for commercial programming and sports. Coordinate actors and crew members. Work with writers and producers to develop high quality content.</div></div>
+        <div class="exp-item"><div class="exp-date">2023 – Present</div><div class="exp-role">Producer</div><div class="exp-org">Brock TV, St. Catharines</div><div class="exp-desc">Extensive use of video editing software and graphics. Set up and operation of single and multi camera systems for live events and productions. Motion picture directing. Operation of all sound recording equipment including shotgun and clip mics. Equipment maintenance and repair. Managing live university sports broadcasts including Hockey, Football, Volleyball, Netball.</div></div>
+        <div class="exp-item"><div class="exp-date">2023</div><div class="exp-role">Restaurant Front of House Support</div><div class="exp-org">Associazione Chianti, Hong Kong</div><div class="exp-desc">Open and close restaurant. Set up restaurant for service. Polish and prepare glassware. Prepare drinks under the guidance of sommelier. Deliver dishes and drinks to tables. General support for all serving and cleaning.</div></div>
+        <div class="exp-item"><div class="exp-date">2022 – 2023</div><div class="exp-role">Camera Operator</div><div class="exp-org">Brock University Sports, St. Catharines</div><div class="exp-desc">Camera operator for BrockTV (OUA) events. Used both video and still shot cameras to capture events. Operated television cameras for live broadcasts. Checked composition and lighting of shots before beginning shoots.</div></div>
+        <div class="exp-item"><div class="exp-date">2021 – 2022</div><div class="exp-role">Assistant Coach</div><div class="exp-org">Hong Kong Cricket, Hong Kong</div><div class="exp-desc">For HKCC junior Hockey team. Conferred with coaches to determine weaknesses in current team roster and develop training plans. Developed and implemented training drills to improve performance.</div></div>
+        <div class="exp-item"><div class="exp-date">2019</div><div class="exp-role">Volunteer Classroom Assistant</div><div class="exp-org">Quarry Bay School, Hong Kong</div><div class="exp-desc">Cleaned and organized art supplies and related materials. Monitored student classroom and outdoors activities to promote student safety. Assisted teachers with classroom management to maintain positive learning environment. Set up visual aids, equipment and classroom displays to support teacher's lesson delivery.</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn-sun">Subscribe</button></form>
+  </div>
+</div>
+
+<!-- ═══════════ BLOG ═══════════ -->
+<div class="page" id="page-blog">
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <p class="sec-label sr">Blog</p>
+      <h2 class="sec-h2 sr sr-d1">Production insights</h2>
+      <div class="blog-grid">
+
+        <div class="blog-entry sr" onclick="toggleBlog(this)">
+          <div class="blog-date-col">Feb 5 · 4 min</div>
+          <div class="blog-content">
+            <div class="blog-author">Noah Davidson</div>
+            <h3>Top Tips for Filmmaking from Neon Sunset Productions</h3>
+            <div class="blog-cover-wrap"><img class="blog-cover" src="production.png" alt="Crowd scene at Isaac's Bar and Grill event"></div>
+            <p class="excerpt">Filmmaking is an art that combines creativity, technical skills, and storytelling. Whether you are a budding filmmaker or an experienced director, there are always new techniques to learn and improve upon.</p>
+            <button class="blog-read-more">Read Article →</button>
+            <div class="full-content">
+              <h2>Understanding Your Story</h2>
+              <p>Every great film starts with a compelling story. Before you even think about the technical aspects of filmmaking, focus on the narrative.</p>
+              <h3>Develop Strong Characters</h3>
+              <p>Characters are the heart of your story. Spend time developing their backgrounds, motivations, and arcs. Audiences connect with characters they can relate to or empathize with.</p>
+              <h3>Create a Solid Outline</h3>
+              <p>A well-structured outline serves as a roadmap for your film. Break your outline into three acts: Setup, Confrontation, and Resolution.</p>
+              <h2>Pre-Production Planning</h2>
+              <p>Once your story is in place, it's time to move into pre-production. This phase is crucial for ensuring a smooth shooting process. Creating a realistic budget is essential — consider all potential costs including equipment rentals, location fees, cast and crew salaries, and post-production expenses.</p>
+              <h2>The Importance of Cinematography</h2>
+              <p>Cinematography is the art of capturing visuals on film. It plays a significant role in how your story is perceived. Investing in quality equipment can significantly impact your film's look. Understanding composition is vital for creating visually appealing shots — use the Rule of Thirds, Leading Lines, and Framing techniques.</p>
+              <h2>Post-Production Magic</h2>
+              <p>Once filming is complete, the real magic happens in post-production. Editing is crucial for pacing and storytelling. Sound is often an overlooked aspect of filmmaking, yet it can significantly enhance the viewer's experience.</p>
+              <h2>Marketing Your Film</h2>
+              <p>Once your film is complete, it's time to share it with the world. Create a compelling trailer, utilize film festivals, and leverage online platforms like social media and streaming services to reach your audience.</p>
+              <p>Take these tips from Neon Sunset Productions and start crafting your cinematic masterpiece today!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-entry sr" onclick="toggleBlog(this)">
+          <div class="blog-date-col">Feb 5 · 4 min</div>
+          <div class="blog-content">
+            <div class="blog-author">Noah Davidson</div>
+            <h3>Behind the Scenes of Neon Sunset Film Productions</h3>
+            <div class="blog-cover-wrap"><img class="blog-cover" src="behind.png" alt="Behind the scenes production set with colored lighting"></div>
+            <p class="excerpt">Creating a film is a complex and exhilarating journey that combines creativity, technology, and teamwork. At Neon Sunset Film Productions, we pride ourselves on our unique approach to filmmaking.</p>
+            <button class="blog-read-more">Read Article →</button>
+            <div class="full-content">
+              <h2>The Pre-Production Phase</h2>
+              <p>Pre-production is the foundation of any successful film. This stage involves extensive planning and preparation, ensuring that every detail is accounted for before filming begins. This includes script development, casting, location scouting, and budgeting.</p>
+              <h2>The Production Phase</h2>
+              <p>With pre-production complete, we dive into the production phase, where the magic happens. This is when we capture the film's footage. Our crew works diligently to set up each scene — arranging lighting, positioning cameras, and ensuring sound equipment is ready. Each scene is shot multiple times from different angles to capture the best performances.</p>
+              <h2>The Post-Production Phase</h2>
+              <p>After filming wraps, we enter post-production where we transform raw footage into a polished film. Our editors meticulously review all footage, selecting the best takes. Sound designers create an immersive audio experience, and colorists adjust hues and contrast to create specific moods.</p>
+              <h2>The Challenges We Face</h2>
+              <p>Filmmaking is not without its challenges — budget constraints, time management, and creative differences are common obstacles. We encourage open communication and constructive discussions to maintain a positive working environment.</p>
+              <h2>The Rewards of Filmmaking</h2>
+              <p>Despite the challenges, the rewards are immense. At the core of our mission is the desire to tell meaningful stories. Filmmaking is a team effort, and the camaraderie among our crew is one of the highlights. We remain committed to our craft and are excited about future projects.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-entry sr" onclick="toggleBlog(this)">
+          <div class="blog-date-col">Feb 5 · 4 min</div>
+          <div class="blog-content">
+            <div class="blog-author">Noah Davidson</div>
+            <h3>Creating Stunning Visuals with Neon Sunset Productions</h3>
+            <div class="blog-cover-wrap"><img class="blog-cover" src="creating.png" alt="Sunset beach scene with warm cinematic lighting"></div>
+            <p class="excerpt">In a world where visual content reigns supreme, the need for captivating imagery has never been more crucial. This guide explores how Neon Sunset Productions can help you create stunning visuals that resonate.</p>
+            <button class="blog-read-more">Read Article →</button>
+            <div class="full-content">
+              <h2>Understanding the Power of Visuals</h2>
+              <p>Visuals are more than just pretty pictures; they are powerful tools that can evoke emotions, tell stories, and convey messages in ways that words alone cannot. Research shows that people process visuals 60,000 times faster than text.</p>
+              <h2>Crafting Your Visual Narrative</h2>
+              <p>Every great visual tells a story. Define your message, choose your style — whether minimalist, cinematic, or documentary — and plan your shots with storyboards to visualize the final product.</p>
+              <h2>Techniques for Stunning Visuals</h2>
+              <p>Mastering lighting is essential — shooting during the golden hour provides soft, warm light that enhances beauty. Composition matters too: use the Rule of Thirds, Leading Lines, and post-production techniques like color grading and cropping to refine your work.</p>
+              <h2>The Importance of Authenticity</h2>
+              <p>In today's digital landscape, authenticity is key. Audiences are drawn to genuine content that reflects real experiences. When your visuals resonate with authenticity, they build trust and lead to deeper connections.</p>
+              <h2>Showcasing Your Visuals</h2>
+              <p>Create a well-curated portfolio, leverage social media platforms like Instagram and Pinterest, and engage with your audience. Creating stunning visuals requires a blend of creativity, technical skills, and a deep understanding of your audience.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn-sun">Subscribe</button></form>
+  </div>
+</div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<div class="page" id="page-contact">
+  <section class="sec sec-dark">
+    <div class="wrap">
+      <p class="sec-label sr">Get in Touch</p>
+      <h2 class="sec-h2 sr sr-d1">Let's create something together</h2>
+      <div class="contact-grid">
+        <form class="contact-form sr sr-d2" onsubmit="formSubmit(event)">
+          <div class="fg-row">
+            <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required></div>
+            <div class="fg"><label>Email</label><input type="email" placeholder="Your email" required></div>
+          </div>
+          <div class="fg"><label>Subject</label><input type="text" placeholder="Project inquiry"></div>
+          <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project..." required></textarea></div>
+          <button type="submit" class="btn-sun" style="align-self:flex-start">Send Message</button>
+        </form>
+        <div class="contact-details sr sr-d3">
+          <div class="cd"><div class="cd-label">Email</div><div class="cd-value"><a href="/cdn-cgi/l/email-protection#533d393732253a37203c3d6163636713343e323a3f7d303c3e"><span class="__cf_email__" data-cfemail="620c080603140b06110d0c5052525622050f030b0e4c010d0f">[email&#160;protected]</span></a><br><a href="/cdn-cgi/l/email-protection#127c4d7673647b76617d7c5274737c617a7365777d7c7e7b7c773c7173"><span class="__cf_email__" data-cfemail="523c0d3633243b36213d3c1234333c213a3325373d3c3e3b3c377c3133">[email&#160;protected]</span></a></div></div>
+          <div class="cd"><div class="cd-label">Phone</div><div class="cd-value"><a href="tel:7053805957">705 380 5957</a></div></div>
+          <div class="cd"><div class="cd-label">Studio Office</div><div class="cd-value">2408 Blyth Road<br>Sudbury, Ontario, Canada</div></div>
+          <div class="cd"><div class="cd-label">Social Media</div><div class="cd-value">Coming soon</div></div>
+          <div class="cd"><div class="cd-label">Availability</div><div class="cd-value">Open for new projects & collaborations</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="newsletter">
+    <h3>Production Updates</h3>
+    <p>Be the first to know about new releases and upcoming projects.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn-sun">Subscribe</button></form>
+  </div>
+</div>
+
+<!-- FOOTER (global) -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Neon Sunset Productions. All rights reserved.</div>
+    <div class="footer-nav">
+      <a onclick="goTo('home')">Home</a>
+      <a onclick="goTo('about')">About</a>
+      <a onclick="goTo('portfolio')">Portfolio</a>
+      <a onclick="goTo('services')">Services</a>
+      <a onclick="goTo('experience')">Experience</a>
+      <a onclick="goTo('blog')">Blog</a>
+      <a onclick="goTo('contact')">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

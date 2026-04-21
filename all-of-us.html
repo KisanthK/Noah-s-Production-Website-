@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All of Us — Neon Sunset Productions</title>
+<link rel="icon" type="image/png" href="sunset.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Franklin:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══ DESIGN TOKENS — matched to main site ═══ */
+:root {
+  --bg:        #0c0b0a;
+  --bg2:       #141311;
+  --bg3:       #1c1a17;
+  --surface:   #22201c;
+  --border:    rgba(255,255,255,0.07);
+  --border-h:  rgba(255,255,255,0.14);
+  --sun:       #e8913a;
+  --sun-glow:  rgba(232,145,58,0.25);
+  --sun-sub:   rgba(232,145,58,0.08);
+  --gold:      #d4a24e;
+  --text:      #c9c2b5;
+  --heading:   #f1ede7;
+  --muted:     #7a756c;
+  --font-disp: 'Playfair Display', Georgia, serif;
+  --font-body: 'Libre Franklin', 'Helvetica Neue', sans-serif;
+  --radius:    10px;
+  --radius-lg: 16px;
+  --max-w:     1100px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--sun); border-radius: 3px; }
+
+a { color: var(--sun); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--gold); }
+
+/* ═══ NAV — same as main site ═══ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 60px);
+  background: rgba(12,11,10,0.88);
+  backdrop-filter: blur(18px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; cursor: pointer;
+}
+
+.nav-brand-icon {
+  width: 32px; height: 32px; border-radius: 6px; object-fit: cover;
+}
+
+.nav-brand-name {
+  font-family: var(--font-disp);
+  font-size: 16px; font-weight: 500;
+  color: var(--heading);
+  letter-spacing: 0.3px;
+}
+
+.nav-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  text-decoration: none; transition: color 0.3s;
+  letter-spacing: 0.3px;
+}
+
+.nav-back:hover { color: var(--sun); }
+
+.nav-back svg {
+  width: 16px; height: 16px; stroke: currentColor;
+  stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ═══ HERO BANNER ═══ */
+.project-hero {
+  padding: 100px clamp(20px, 5vw, 60px) 0;
+  background:
+    linear-gradient(180deg, rgba(12,11,10,0.3) 0%, var(--bg) 100%),
+    var(--bg2);
+}
+
+.project-hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.poster-frame {
+  position: sticky; top: 100px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  aspect-ratio: auto;
+  background: var(--bg3);
+}
+
+.poster-frame img {
+  width: 100%; height: auto; display: block;
+}
+
+.project-meta {
+  padding-top: 8px;
+}
+
+.project-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  background: var(--sun-sub);
+  border: 1px solid rgba(232,145,58,0.2);
+  border-radius: 100px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--sun); margin-bottom: 20px;
+}
+
+.project-title {
+  font-family: var(--font-disp);
+  font-size: clamp(36px, 5vw, 54px);
+  color: var(--heading);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.project-subtitle {
+  font-family: var(--font-disp);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.project-quick-facts {
+  display: flex; flex-wrap: wrap; gap: 24px;
+  margin-bottom: 28px;
+}
+
+.quick-fact {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.quick-fact-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+.quick-fact-value {
+  font-size: 14px; font-weight: 500;
+  color: var(--heading);
+}
+
+.project-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+/* Buttons — matched to main site's btn-sun / btn-ghost */
+.btn-sun {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px;
+  background: var(--sun);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.4px;
+  border: none; border-radius: 8px;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-sun:hover {
+  background: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px var(--sun-glow);
+  color: var(--bg);
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.4px;
+  border: 1px solid var(--border-h);
+  border-radius: 8px;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  border-color: var(--sun);
+  color: var(--sun);
+  background: var(--sun-sub);
+}
+
+.btn-ghost svg, .btn-sun svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ═══ SECTION PATTERNS ═══ */
+.sec {
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 60px);
+}
+
+.sec-dark { background: var(--bg); }
+.sec-alt  { background: var(--bg2); }
+
+.sec-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.sec-label {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--sun);
+  margin-bottom: 12px;
+}
+
+.sec-label::before {
+  content: ''; width: 24px; height: 1px;
+  background: var(--sun); opacity: 0.5;
+}
+
+.sec-h2 {
+  font-family: var(--font-disp);
+  font-size: clamp(24px, 3.5vw, 36px);
+  color: var(--heading);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* ═══ TRAILER VIDEO ═══ */
+.trailer-section {
+  padding: 0 clamp(20px, 5vw, 60px) clamp(48px, 8vw, 80px);
+  background: var(--bg);
+}
+
+.trailer-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.video-container {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.video-container video {
+  width: 100%; display: block;
+}
+
+.video-label {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 16px;
+  font-size: 12px; font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.video-label::before {
+  content: '▶'; color: var(--sun); font-size: 10px;
+}
+
+/* ═══ SYNOPSIS ═══ */
+.synopsis-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text);
+  font-weight: 300;
+}
+
+.synopsis-text p { margin-bottom: 16px; }
+
+.synopsis-text p:last-child { margin-bottom: 0; }
+
+/* ═══ DIRECTOR BIO ═══ */
+.director-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.director-photo-frame {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+}
+
+.director-photo-frame img {
+  width: 100%; display: block;
+}
+
+.director-bio-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  font-weight: 300;
+}
+
+.director-bio-text p { margin-bottom: 14px; }
+
+.director-name {
+  font-family: var(--font-disp);
+  font-size: 28px;
+  color: var(--heading);
+  margin-bottom: 4px;
+}
+
+.director-role {
+  font-size: 13px;
+  color: var(--sun);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+/* ═══ CREDITS TABLE ═══ */
+.credits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.credit-item {
+  padding: 20px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s;
+}
+
+.credit-item:hover { border-color: var(--border-h); }
+
+.credit-role {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--muted); margin-bottom: 4px;
+}
+
+.credit-name {
+  font-size: 15px; font-weight: 500;
+  color: var(--heading);
+}
+
+/* ═══ CAST LIST (Testimonies) ═══ */
+.cast-pills {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+
+.cast-pill {
+  padding: 8px 18px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 13px; font-weight: 400;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.cast-pill:hover {
+  border-color: var(--sun);
+  color: var(--sun);
+  background: var(--sun-sub);
+}
+
+/* ═══ CONTACT CTA ═══ */
+.contact-cta {
+  text-align: center;
+  padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 60px);
+  background: var(--bg);
+  position: relative;
+}
+
+.contact-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, var(--sun-glow), transparent);
+  pointer-events: none;
+}
+
+.contact-cta-inner {
+  position: relative; z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-cta h2 {
+  font-family: var(--font-disp);
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--heading);
+  margin-bottom: 12px;
+}
+
+.contact-cta p {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.contact-details-row {
+  display: flex; justify-content: center;
+  gap: 32px; flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.cd-item {
+  text-align: center;
+}
+
+.cd-item-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--muted); margin-bottom: 4px;
+}
+
+.cd-item-value {
+  font-size: 14px; color: var(--heading);
+}
+
+.cd-item-value a { color: var(--sun); }
+
+/* ═══ DIVIDERS ═══ */
+.sec-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-h), transparent);
+  margin: 0 clamp(20px, 5vw, 60px);
+}
+
+/* ═══ FOOTER — same as main site ═══ */
+.footer {
+  padding: 28px clamp(20px, 5vw, 60px);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 12px; color: var(--muted);
+}
+
+.footer-link {
+  font-size: 12px; color: var(--muted);
+  text-decoration: none; transition: color 0.3s;
+}
+
+.footer-link:hover { color: var(--sun); }
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 860px) {
+  .project-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .poster-frame {
+    position: static;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .director-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .director-photo-frame {
+    max-width: 300px;
+  }
+
+  .credits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-details-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .project-quick-facts { gap: 16px; }
+  .project-actions { flex-direction: column; }
+  .project-actions .btn-sun,
+  .project-actions .btn-ghost { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav">
+  <a class="nav-brand" href="index.html">
+    <img class="nav-brand-icon" src="sunset.jpg" alt="Neon Sunset Productions">
+    <span class="nav-brand-name">Neon Sunset Productions</span>
+  </a>
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Portfolio
+  </a>
+</nav>
+
+<!-- ═══ HERO — Poster + Meta ═══ -->
+<section class="project-hero">
+  <div class="project-hero-inner">
+    <div class="poster-frame reveal">
+      <img src="Screenshot_2026-04-18_at_4_50_03_AM.png" alt="All of Us — Official Poster">
+    </div>
+    <div class="project-meta">
+      <div class="project-tag reveal">Neon Sundown Productions</div>
+      <h1 class="project-title reveal reveal-d1">All of Us</h1>
+      <p class="project-subtitle reveal reveal-d1">The Storm Before the Quiet</p>
+
+      <div class="project-quick-facts reveal reveal-d2">
+        <div class="quick-fact">
+          <span class="quick-fact-label">Directed By</span>
+          <span class="quick-fact-value">Noah Davidson &amp; Evan Sosnowich</span>
+        </div>
+        <div class="quick-fact">
+          <span class="quick-fact-label">Running Time</span>
+          <span class="quick-fact-value">8 Minutes</span>
+        </div>
+        <div class="quick-fact">
+          <span class="quick-fact-label">Type</span>
+          <span class="quick-fact-value">Documentary Short</span>
+        </div>
+        <div class="quick-fact">
+          <span class="quick-fact-label">Produced By</span>
+          <span class="quick-fact-value">Adamm Liley &amp; Charlie Egleston</span>
+        </div>
+        <div class="quick-fact">
+          <span class="quick-fact-label">Program</span>
+          <span class="quick-fact-value">Fanshawe College — Advanced Filmmaking 2026</span>
+        </div>
+      </div>
+
+      <div class="project-actions reveal reveal-d3">
+        <a href="#trailer" class="btn-sun">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="currentColor" stroke="none"/></svg>
+          Watch Trailer
+        </a>
+        <a href="Copy_of_Film_EPK_Template_-_StudioBinder.pdf" target="_blank" class="btn-ghost">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download EPK
+        </a>
+        <a href="#contact-section" class="btn-ghost">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact Director
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRAILER VIDEO ═══ -->
+<section class="trailer-section" id="trailer">
+  <div class="trailer-wrap">
+    <div class="video-label reveal">Official Trailer</div>
+    <div class="video-container reveal reveal-d1">
+      <video controls preload="metadata" playsinline poster="Screenshot_2026-04-18_at_4_50_03_AM.png">
+        <source src="t4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ═══ SYNOPSIS ═══ -->
+<section class="sec sec-dark">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Synopsis</p>
+    <h2 class="sec-h2 reveal reveal-d1">About the Film</h2>
+    <div class="synopsis-text reveal reveal-d2">
+      <p><em>All of Us</em> is an in-depth look at the making of <em>Inherited</em>, the large narrative production of Fanshawe College's 2026 Advanced Filmmaking class. As part of their classwork, the AFM class came together for three intense days to shoot an entire short film. Every member of the class took on a role found on a professional film set — from director to craft services.</p>
+      <p>Discussions with executive producers and AFM professors Charlie Egleston and Adamm Liley further delve into the background of the production block and how it came to be.</p>
+      <p>Featuring interviews with some of the best and brightest of today's emerging filmmakers — including writer/director Camilo Giraldo, director of photography Branden Emeny, line producer Brenna Girardin, and actor Juanes Giraldo — <em>All of Us</em> is a fascinating look at how a class of first-time student filmmakers joined together to make a production that can rival the best of what Hollywood puts out.</p>
+      <p>This documentary is essential viewing for anyone with even a passing interest in Canadian filmmaking, as it provides a glimpse into the bright future these young visionaries have in store for the next generation.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ═══ DIRECTOR ═══ -->
+<section class="sec sec-alt">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Filmmaker</p>
+    <h2 class="sec-h2 reveal reveal-d1">Director</h2>
+    <div class="director-split reveal reveal-d2">
+      <div>
+        <h3 class="director-name">Noah Davidson</h3>
+        <p class="director-role">Director &amp; Cinematographer</p>
+        <div class="director-bio-text">
+          <p>Hailing from Hong Kong and studying film at Brock University and Fanshawe College, Noah Davidson has been making films of some form or another for over a decade.</p>
+          <p>With a strong background in film production, theory and criticism, Noah's aspiration is to enter the industry as an assistant director, and eventually to become a writer and director.</p>
+          <p>He enjoys science fiction, horror and all possible blends of the two. His latest project <em>Dark Night</em> is currently in pre-production and is scheduled to shoot in May of 2026.</p>
+        </div>
+      </div>
+      <div class="director-photo-frame">
+        <img src="noah.jpg" alt="Noah Davidson — Director portrait">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ═══ CREDITS ═══ -->
+<section class="sec sec-dark">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Credits</p>
+    <h2 class="sec-h2 reveal reveal-d1">Production Team</h2>
+    <div class="credits-grid reveal reveal-d2">
+      <div class="credit-item">
+        <div class="credit-role">Directed By</div>
+        <div class="credit-name">Noah Davidson &amp; Evan Sosnowich</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Produced By</div>
+        <div class="credit-name">Charlie Egleston &amp; Adamm Liley</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Director of Photography</div>
+        <div class="credit-name">Noah Davidson &amp; Evan Sosnowich</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Editor</div>
+        <div class="credit-name">Noah Davidson &amp; Evan Sosnowich</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Sound Recordist &amp; Mixer</div>
+        <div class="credit-name">Jason Sasmita</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Music</div>
+        <div class="credit-name">Artlist.io</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Production Company</div>
+        <div class="credit-name">Neon Sundown Productions</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-role">Special Thanks</div>
+        <div class="credit-name">Corey Downing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ═══ FEATURING (testimonies) ═══ -->
+<section class="sec sec-alt">
+  <div class="sec-inner">
+    <p class="sec-label reveal">Interviews</p>
+    <h2 class="sec-h2 reveal reveal-d1">Featuring the testimony of</h2>
+    <div class="cast-pills reveal reveal-d2">
+      <span class="cast-pill">Charlie Egleston</span>
+      <span class="cast-pill">Adamm Liley</span>
+      <span class="cast-pill">Camilo Giraldo</span>
+      <span class="cast-pill">Maggie Sanders</span>
+      <span class="cast-pill">Tara Locke</span>
+      <span class="cast-pill">Jamie Campbell</span>
+      <span class="cast-pill">Branden Emeny</span>
+      <span class="cast-pill">Brenna Girardin</span>
+      <span class="cast-pill">Juanes Giraldo</span>
+      <span class="cast-pill">Maxine Graham</span>
+      <span class="cast-pill">Jay Duke</span>
+      <span class="cast-pill">Ana Garcia Caicedo</span>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ═══ EPK DOWNLOAD ═══ -->
+<section class="sec sec-dark">
+  <div class="sec-inner" style="text-align:center;">
+    <p class="sec-label reveal" style="justify-content:center">Press</p>
+    <h2 class="sec-h2 reveal reveal-d1" style="text-align:center">Electronic Press Kit</h2>
+    <p class="reveal reveal-d2" style="color:var(--muted);font-size:14px;max-width:500px;margin:0 auto 24px;font-weight:300;">Download the full EPK for press inquiries, screening requests, and festival submissions.</p>
+    <a href="Copy_of_Film_EPK_Template_-_StudioBinder.pdf" target="_blank" class="btn-sun reveal reveal-d3">
+      <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Download EPK (PDF)
+    </a>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ═══ CONTACT CTA ═══ -->
+<section class="contact-cta" id="contact-section">
+  <div class="contact-cta-inner">
+    <h2 class="reveal">Get in Touch</h2>
+    <p class="reveal reveal-d1">Interested in screening <em>All of Us</em>, press inquiries, or collaborating on future projects? Reach out directly.</p>
+    <div class="project-actions reveal reveal-d2" style="justify-content:center;">
+      <a href="mailto:njdavidson2004@gmail.com" class="btn-sun">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Noah Davidson
+      </a>
+      <a href="https://instagram.com/noahdavidson692" target="_blank" class="btn-ghost">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;stroke:none;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @noahdavidson692
+      </a>
+    </div>
+    <div class="contact-details-row reveal reveal-d3">
+      <div class="cd-item">
+        <div class="cd-item-label">Email</div>
+        <div class="cd-item-value"><a href="mailto:njdavidson2004@gmail.com">njdavidson2004@gmail.com</a></div>
+      </div>
+      <div class="cd-item">
+        <div class="cd-item-label">Instagram</div>
+        <div class="cd-item-value"><a href="https://instagram.com/noahdavidson692" target="_blank">@noahdavidson692</a></div>
+      </div>
+      <div class="cd-item">
+        <div class="cd-item-label">In Association With</div>
+        <div class="cd-item-value">Fanshawe College</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Neon Sunset Productions. All rights reserved.</div>
+    <a class="footer-link" href="index.html">← Back to Main Site</a>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
